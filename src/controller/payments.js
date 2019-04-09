@@ -1,15 +1,11 @@
 export let payOrder = (req, res) => {
     try {
-        let params = req.body;
-        console.log('params', params);
-        DataAccessService.executeSPWithCallback('sp_create_order', params, true, (queryResponse) => {
-            if (queryResponse.status === 0) {
-                res.send(queryResponse.result);
-            }
-            else {
-                res.status(500).send("Error: " + JSON.stringify(queryResponse));
-            }
-        });
+        let result = {
+            status: 'confirmed',
+            status_code: 0,
+            description: 'payment confirmed'
+        }
+        res.send(result);        
     }
     catch (err) {
         console.log('error', err);
