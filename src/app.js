@@ -13,8 +13,8 @@ app.get('/', (req, res)=>{
     res.send('app started!');
 });
 
-app.post('/api/payment/paymentorder', paymentController.payOrder);
+app.get('/api/payment/paymentorder/:orderdetails?', paymentController.payOrder);
 
 app.listen(port, ()=>{
-    console.log(`Order App listening on port: ${ port }!`)
+    console.log(`Payment App listening on port: ${ port }!`)
 })
